@@ -302,6 +302,124 @@
             padding-top: 5px;
         }
 
+        /* Adjust styles for screens smaller than 768px (tablets and smaller) */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 10px;
+                height: auto; /* Allow nav to grow as needed */
+            }
+
+            nav .logo {
+                font-size: 1.2em; /* Reduce logo size */
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack navigation links vertically */
+                gap: 10px;
+                align-items: center;
+            }
+
+            nav ul li a {
+                font-size: 0.9em;
+                padding: 8px 10px;
+            }
+
+            header h1 {
+                font-size: 2.5em; /* Reduce font size for header title */
+            }
+
+            header p {
+                font-size: 1.2em; /* Reduce paragraph size */
+            }
+
+            .filter-bar {
+                width: 90%; /* Reduce width of search bar */
+                margin-top: 150px; /* Adjust spacing from the top */
+            }
+
+            .teams {
+                padding: 10px; /* Reduce padding around the teams section */
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduce card size */
+                gap: 20px; /* Adjust spacing between cards */
+            }
+
+            .team-card {
+                padding: 15px; /* Reduce card padding */
+                font-size: 0.9em; /* Adjust font size for content */
+                max-width: 100%; /* Allow cards to grow full width */
+            }
+
+            footer {
+                text-align: center; /* Center footer content */
+                padding: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack footer sections vertically */
+            }
+
+            .footer-contact, .footer-social {
+                margin-bottom: 20px;
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details vertically */
+                gap: 10px;
+            }
+
+            .social-links {
+                justify-content: center; /* Center align social links */
+                gap: 10px; /* Adjust spacing between links */
+            }
+        }
+
+        /* Adjust styles for screens smaller than 480px (phones and smaller) */
+        @media screen and (max-width: 480px) {
+            nav .logo {
+                font-size: 1em; /* Further reduce logo size */
+            }
+
+            nav ul li a {
+                font-size: 0.8em;
+                padding: 5px 8px;
+            }
+
+            header h1 {
+                font-size: 2em;
+                margin-top: 90px;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .filter-bar {
+                width: 95%; /* Further reduce width */
+                margin-top: 260px; /* Adjust spacing */
+            }
+
+            .teams {
+                grid-template-columns: 1fr; /* Single column layout */
+                gap: 15px;
+                padding: 10px;
+            }
+
+            .team-card {
+                padding: 10px; /* Reduce card padding */
+                font-size: 0.8em;
+            }
+
+            .footer-contact h3, .footer-social h3 {
+                font-size: 1.2em;
+            }
+
+            .footer-bottom {
+                font-size: 0.7em; /* Reduce footer text size */
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -315,10 +433,10 @@
     <nav>
         <div class="logo">StudyHub</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="challenges.html">Challenges</a></li>
-            <li><a href="community.html">Community</a></li>
+            <li><a href="index.html">Home🏠</a></li>
+            <li><a href="dashboard.html">Dashboard📊</a></li>
+            <li><a href="challenges.html">Challenges💪</a></li>
+            <li><a href="community.html">Community🤝</a></li>
         </ul>
     </nav>
 
@@ -338,7 +456,7 @@
         <!-- Team 1 -->
         <div class="team-card">
             <h2>Team Alpha</h2>
-            <p>A group for math enthusiasts</p>
+            <p>A group for math lovers</p>
             <p>Members: 12</p>
             <button onclick="joinTeam(this)">Join</button>
         </div>
@@ -413,8 +531,8 @@
                 <h3>Contact Us</h3>
                 <div class="contact-details">
                     <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 Study Lane, Knowledge City, Learning State</p>
+                    <p>Phone: +65 1234 5678</p>
+                    <p>Address: 123 Clementi Lane, Singapore</p>
                 </div>
             </div>
     

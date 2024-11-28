@@ -180,6 +180,84 @@
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 5px;
         }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-wrap: wrap; /* Allow items to wrap */
+                padding: 10px; /* Adjust padding */
+                height: auto; /* Remove fixed height */
+            }
+
+            nav .logo {
+                font-size: 1.2em; /* Smaller logo font size */
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack menu items vertically */
+                gap: 10px; /* Reduce spacing */
+            }
+
+            nav ul li a {
+                font-size: 0.9em; /* Reduce font size for links */
+                padding: 8px 10px; /* Adjust padding */
+            }
+
+            .content h1 {
+                font-size: 2.5em; /* Reduce heading size */
+            }
+
+            .content p {
+                font-size: 1.2em; /* Adjust paragraph size */
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack footer sections vertically */
+                text-align: center; /* Center-align text */
+            }
+
+            .footer-contact, .footer-social {
+                width: 100%; /* Take full width */
+                margin-bottom: 20px; /* Add spacing between sections */
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details */
+                gap: 10px; /* Reduce gap */
+            }
+
+            .social-links {
+                justify-content: center; /* Center social links */
+                gap: 10px; /* Reduce spacing between links */
+            }
+        }
+
+        /* Adjust styles for screens smaller than 480px (phones and smaller) */
+        @media screen and (max-width: 480px) {
+            nav .logo {
+                font-size: 1em; /* Even smaller logo font size */
+            }
+
+            nav ul li a {
+                font-size: 0.8em; /* Further reduce font size */
+                padding: 5px 8px; /* Smaller padding */
+            }
+
+            .content h1 {
+                font-size: 2em; /* Further reduce heading size */
+            }
+
+            .content p {
+                font-size: 1em; /* Further adjust paragraph size */
+            }
+
+            .footer-contact h3, .footer-social h3 {
+                font-size: 1.2em; /* Adjust footer heading size */
+            }
+
+            .footer-bottom {
+                font-size: 0.7em; /* Reduce footer bottom text size */
+            }
+        }
     </style>
 </head>
 <body>
@@ -193,10 +271,10 @@
     <nav>
         <div class="logo">StudyHub</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="challenges.html">Challenges</a></li>
-            <li><a href="community.html">Community</a></li>
+            <li><a href="index.html">Home🏠</a></li>
+            <li><a href="dashboard.html">Dashboard📊</a></li>
+            <li><a href="challenges.html">Challenges💪</a></li>
+            <li><a href="community.html">Community🤝</a></li>
         </ul>
     </nav>
     
@@ -217,8 +295,8 @@
                 <h3>Contact Us</h3>
                 <div class="contact-details">
                     <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 Study Lane, Knowledge City, Learning State</p>
+                    <p>Phone: +65 1234 5678</p>
+                    <p>Address: 123 Clementi Lane, Singapore</p>
                 </div>
             </div>
     

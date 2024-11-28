@@ -300,6 +300,126 @@
             padding-top: 5px;
         }
 
+        /* Tablet and smaller screens */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 10px;
+                height: auto; /* Adjust height for wrapped content */
+            }
+
+            nav .logo {
+                font-size: 1.2em; /* Reduce logo size */
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack links vertically */
+                gap: 10px;
+                align-items: center;
+            }
+
+            nav ul li a {
+                font-size: 0.9em; /* Adjust link font size */
+                padding: 8px 10px;
+            }
+
+            header h1 {
+                font-size: 2.5em; /* Adjust heading size */
+            }
+
+            header p {
+                font-size: 1.2em; /* Adjust subheading size */
+            }
+
+            .challenges {
+                grid-template-columns: 1fr; /* Single column layout for cards */
+                gap: 20px; /* Adjust spacing between cards */
+                padding: 0 20px; /* Reduce horizontal padding */
+            }
+
+            .challenge-card {
+                padding: 15px; /* Reduce padding */
+                font-size: 0.9em; /* Adjust text size */
+            }
+
+            .leaderboard {
+                width: 100%; /* Take full width */
+                margin: 20px 0; /* Adjust margin */
+            }
+
+            footer {
+                padding: 20px;
+                text-align: center; /* Center-align footer content */
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack footer sections vertically */
+                align-items: center;
+            }
+
+            .footer-contact, .footer-social {
+                margin-bottom: 20px;
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details vertically */
+                gap: 10px; /* Adjust spacing */
+            }
+
+            .social-links {
+                justify-content: center; /* Center-align social links */
+                gap: 10px; /* Adjust spacing */
+            }
+        }
+
+        /* Mobile and smaller screens */
+        @media screen and (max-width: 480px) {
+            nav .logo {
+                font-size: 1em; /* Further reduce logo size */
+            }
+
+            nav ul li a {
+                font-size: 0.8em;
+                padding: 5px 8px;
+            }
+
+            header h1 {
+                font-size: 2em; /* Smaller heading size */
+                margin-top: 90px;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+
+            .challenges {
+                padding: 0 10px; /* Further reduce padding */
+            }
+
+            .challenge-card {
+                padding: 10px; /* Reduce padding further */
+                font-size: 0.8em; /* Smaller text */
+            }
+
+            .leaderboard h2 {
+                font-size: 2em; /* Adjust heading size */
+            }
+
+            .leaderboard table {
+                font-size: 1em; /* Smaller table font */
+            }
+
+            .footer-contact h3, .footer-social h3 {
+                font-size: 1.2em; /* Adjust footer heading size */
+            }
+
+            .footer-bottom {
+                font-size: 0.7em; /* Reduce footer text size */
+            }
+        }
+
+
 
     </style>
 </head>
@@ -314,10 +434,10 @@
     <nav>
         <div class="logo">StudyHub</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="challenges.html">Challenges</a></li>
-            <li><a href="community.html">Community</a></li>
+            <li><a href="index.html">Home🏠</a></li>
+            <li><a href="dashboard.html">Dashboard📊</a></li>
+            <li><a href="challenges.html">Challenges💪</a></li>
+            <li><a href="community.html">Community🤝</a></li>
         </ul>
     </nav>
 
@@ -413,8 +533,8 @@
                 <h3>Contact Us</h3>
                 <div class="contact-details">
                     <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 Study Lane, Knowledge City, Learning State</p>
+                    <p>Phone: +65 1234 5678</p>
+                    <p>Address: 123 Clementi Lane, Singapore</p>
                 </div>
             </div>
     
@@ -433,5 +553,6 @@
         <div class="footer-bottom">
             <p>&copy; 2024 StudyHub. All rights reserved.</p>
         </div>
+    </footer>
 </body>
 </html>

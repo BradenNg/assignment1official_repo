@@ -136,7 +136,7 @@
         /* Visible state */
         .card[data-animate].animate {
             opacity: 1;
-            transform: translateY(0); /* Move to original position */
+            transform: translateY(0); 
         }
 
         .chart-container {
@@ -246,6 +246,114 @@
             padding-top: 5px;
         }
 
+        /* Adjust styles for screens smaller than 768px (tablets and smaller) */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 10px;
+                height: auto; /* Allow nav to grow as needed */
+            }
+
+            nav .logo {
+                font-size: 1.2em;
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack navigation links vertically */
+                gap: 10px;
+                align-items: center;
+            }
+
+            nav ul li a {
+                font-size: 0.9em;
+                padding: 8px 10px;
+            }
+
+            header h1 {
+                font-size: 2.5em; /* Reduce font size for header title */
+            }
+
+            header p {
+                font-size: 1.2em; /* Reduce paragraph size */
+            }
+
+            .dashboard {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduce card size for smaller screens */
+                padding: 10px;
+            }
+
+            .card {
+                padding: 15px;
+                font-size: 0.9em; /* Adjust font size for content */
+            }
+
+            .chart-container {
+                height: 200px; /* Adjust chart height */
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack footer sections vertically */
+                text-align: center;
+            }
+
+            .footer-contact, .footer-social {
+                margin-bottom: 20px;
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details vertically */
+                gap: 10px;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 10px; /* Reduce gap between social links */
+            }
+        }
+
+        /* Adjust styles for screens smaller than 480px (phones and smaller) */
+        @media screen and (max-width: 480px) {
+            nav .logo {
+                font-size: 1em; /* Further reduce logo size */
+            }
+
+            nav ul li a {
+                font-size: 0.8em;
+                padding: 5px 8px;
+            }
+
+            header h1 {
+                font-size: 2em;
+                margin-top: 90px;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr; /* Single column layout */
+                gap: 20px;
+                padding: 10px;
+                margin-top: -60px;
+            }
+
+            .card {
+                padding: 10px;
+                font-size: 0.8em;
+            }
+
+            .footer-contact h3, .footer-social h3 {
+                font-size: 1.2em;
+            }
+
+            .footer-bottom {
+                font-size: 0.7em;
+            }
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -259,10 +367,10 @@
     <nav>
         <div class="logo">StudyHub</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="challenges.html">Challenges</a></li>
-            <li><a href="community.html">Community</a></li>
+            <li><a href="index.html">Home🏠</a></li>
+            <li><a href="dashboard.html">Dashboard📊</a></li>
+            <li><a href="challenges.html">Challenges💪</a></li>
+            <li><a href="community.html">Community🤝</a></li>
         </ul>
     </nav>
     
@@ -443,11 +551,11 @@
             element.textContent = count;
             if (count >= target) clearInterval(interval);
         }, 50);
-    }
+        }
 
-    animateCounter("studyHoursCounter", 40); // Simulates 40 hours
+        animateCounter("studyHoursCounter", 40); // Simulates 40 hours
 
-    function addTask() {
+        function addTask() {
         const task = document.getElementById("newTask").value;
         if (task) {
             const list = document.getElementById("todoList");
@@ -455,32 +563,32 @@
             listItem.innerHTML = `<input type="checkbox" /> ${task}`;
             list.appendChild(listItem);
             document.getElementById("newTask").value = "";
+            }
         }
-    }
 
-    function updateClock() {
+        function updateClock() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
-    }
+        }
 
-    setInterval(updateClock, 1000);
-    updateClock();
+        setInterval(updateClock, 1000);
+        updateClock();
 
-    // Function to add 'animate' class to all dashboard cards
-    function animateDashboard() {
-        const cards = document.querySelectorAll('.card[data-animate]');
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('animate');
-            }, index * 200); // Stagger the animation by 200ms
-        });
-    }
+        // Function to add 'animate' class to all dashboard cards
+        function animateDashboard() {
+            const cards = document.querySelectorAll('.card[data-animate]');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 200); // Stagger the animation by 200ms
+            });
+        }
 
-    // Trigger animation when the page loads
-    window.addEventListener('load', animateDashboard);
+        // Trigger animation when the page loads
+        window.addEventListener('load', animateDashboard);
 
     </script>
 
@@ -492,8 +600,8 @@
                 <h3>Contact Us</h3>
                 <div class="contact-details">
                     <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
-                    <p>Phone: +1 (123) 456-7890</p>
-                    <p>Address: 123 Study Lane, Knowledge City, Learning State</p>
+                    <p>Phone: +65 1234 5678</p>
+                    <p>Address: 123 Clementi Lane, Singapore</p>
                 </div>
             </div>
     
