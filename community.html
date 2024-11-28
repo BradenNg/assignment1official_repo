@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - StudyHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body spans the full viewport height */
+        }
+
+        header, .dashboard {
+            flex: 1; /* Allow the main content to grow and take available space */
+        }
+
+        /* Background Video */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 100;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav .logo {
+            font-size: 1.5em;
+            color: white;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fallIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        .team-card {
+            opacity: 0; /* Initially hidden */
+            animation: fallIn 0.8s ease-out forwards; /* Apply animation */
+        }
+
+        /* Add staggered delays for each card */
+        .team-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .team-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .team-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .team-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .team-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            margin-top: 100px;
+        }
+        header h1 {
+            font-size: 4em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        /* Search Bar */
+        .filter-bar {
+            position: absolute; /* Locks the bar in one place */
+            top: 20px; /* Adjust based on your needs */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px; /* Or any desired width */
+            margin-top: 220px;
+        }
+        .filter-bar input {
+            position: relative; /* Prevents movement */
+            display: block; /* Ensures it's not affected by text content */
+            margin: 0 auto; /* Centers the bar */
+            width: 80%; /* Fixed width */
+            padding: 10px; /* Ensure consistent padding */
+            font-size: 1em;
+            border: 2px solid #FF6347; /* Border shouldn't change */
+            border-radius: 20px; /* Rounded corners */
+            box-sizing: border-box; /* Includes padding and border in width */
+        }
+
+        /* Placeholder Text Styling */
+        .filter-bar input::placeholder {
+            color: #FF6347; /* Warm orange-red to fit the lantern theme */
+            font-style: italic;
+        }
+        /* Teams Grid */
+        .teams {
+            display: flex;
+            flex-wrap: wrap; /* Wrap items to the next line */
+            justify-content: center; /* Center align all items */
+            gap: 30px; /* Spacing between items */
+            margin: 50px auto;
+            padding: 0 50px;
+            max-width: 1200px;
+            transform: translateY(50px); /* Moves the box up by 20px */
+        }
+
+        /* Assign grid areas to individual cards */
+        .teams .team-card:nth-child(1) { grid-area: team1; }
+        .teams .team-card:nth-child(2) { grid-area: team2; }
+        .teams .team-card:nth-child(3) { grid-area: team3; }
+        .teams .team-card:nth-child(4) { grid-area: team4; }
+        .teams .team-card:nth-child(5) { grid-area: team5; }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space out the content vertically */
+            align-items: center; /* Center align items horizontally */
+            flex: 1 1 calc(33.33% - 30px); /* Maintain equal width for top row */
+            max-width: 300px; /* Consistent width */
+            height: 200px; /* Set a fixed height for all cards */
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-card:nth-last-child(-n+2) {
+            flex: 1 1 calc(50% - 30px); /* Bottom two items take half the row */
+            margin-top: 20px; /* Add spacing from the top row */
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 165, 0, 0.7);
+        }
+        .team-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .team-card p {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        .team-card button {
+            background: linear-gradient(to right, #FF6347, #FFD700);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .team-card button:hover {
+            background: linear-gradient(to right, #FFD700, #FF6347);
+        }
+
+        /* Footer Section */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px; /* Reduced padding for shorter height */
+            text-align: left;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            margin-top: 175px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Contact Us Styling */
+        .footer-contact h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .contact-details {
+            display: flex;
+            gap: 30px; /* Space between email, phone, and address */
+            font-size: 0.9em; /* Slightly smaller font for compact design */
+        }
+
+        .contact-details p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #FFD700;
+        }
+
+        /* Social Media Links */
+        .footer-social h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Align items side by side */
+            gap: 15px; /* Space between each social link */
+        }
+
+        .social-links li {
+            margin: 0;
+        }
+
+        .social-links li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-links li a:hover {
+            color: #FFD700;
+        }
+
+        /* Footer Bottom Section */
+        .footer-bottom {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.8em;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="video-background" autoplay muted loop>
+        <source src="japanese-lanterns-street-moewalls-com.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">StudyHub</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Community</h1>
+        <p>Join teams, collaborate, and learn together</p>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search teams...">
+    </div>
+
+    <!-- Teams Section -->
+    <section class="teams" id="teams">
+        <!-- Team 1 -->
+        <div class="team-card">
+            <h2>Team Alpha</h2>
+            <p>A group for math enthusiasts</p>
+            <p>Members: 12</p>
+            <button onclick="joinTeam(this)">Join</button>
+        </div>
+        <!-- Team 2 -->
+        <div class="team-card">
+            <h2>Bookworms</h2>
+            <p>For avid readers and discussions</p>
+            <p>Members: 8</p>
+            <button onclick="joinTeam(this)">Join</button>
+        </div>
+        <!-- Team 3 -->
+        <div class="team-card">
+            <h2>Code Crackers</h2>
+            <p>All about coding and tech projects</p>
+            <p>Members: 15</p>
+            <button onclick="joinTeam(this)">Join</button>
+        </div>
+        <!-- Team 4 -->
+        <div class="team-card">
+            <h2>Art Aficionados</h2>
+            <p>A team for lovers of art and creativity</p>
+            <p>Members: 10</p>
+            <button onclick="joinTeam(this)">Join</button>
+        </div>
+        <!-- Team 5 -->
+        <div class="team-card">
+            <h2>Fitness Friends</h2>
+            <p>For health and fitness passionates</p>
+            <p>Members: 18</p>
+            <button onclick="joinTeam(this)">Join</button>
+        </div>
+    </section>
+
+    <script>
+        // Join Button Feedback
+        function joinTeam(button) {
+            button.textContent = "Joined!";
+            button.disabled = true;
+            button.style.background = "rgba(128, 128, 128, 0.8)";
+        }
+
+        // Filter Teams
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const teamCards = document.querySelectorAll('.team-card');
+
+            teamCards.forEach(card => {
+                const teamName = card.querySelector('h2').textContent.toLowerCase();
+                if (teamName.includes(searchValue)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Wait for the page to load
+        document.addEventListener("DOMContentLoaded", function () {
+            const teamCards = document.querySelectorAll(".team-card");
+            teamCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`; // Stagger the animation
+                card.classList.add("fall-in");
+            });
+        });
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <!-- Contact Us Section -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-details">
+                    <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
+                    <p>Phone: +1 (123) 456-7890</p>
+                    <p>Address: 123 Study Lane, Knowledge City, Learning State</p>
+                </div>
+            </div>
+    
+            <!-- Social Media Section -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#" target="_blank">Facebook</a></li>
+                    <li><a href="#" target="_blank">Twitter</a></li>
+                    <li><a href="#" target="_blank">LinkedIn</a></li>
+                    <li><a href="#" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2024 StudyHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
