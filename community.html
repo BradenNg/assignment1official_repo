@@ -302,6 +302,25 @@
             padding-top: 5px;
         }
 
+        /* Falling animation keyframes */
+        @keyframes falling {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px); /* Start above */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* End at original position */
+            }
+        }
+
+        /* Apply falling animation to elements */
+        .fall-in {
+            animation: falling 1s ease-out forwards; /* 1s duration, smooth ease-out effect */
+            opacity: 0; /* Hidden until animation starts */
+        }
+
+
         /* Adjust styles for screens smaller than 768px (tablets and smaller) */
         @media screen and (max-width: 768px) {
             nav {
@@ -441,10 +460,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <header>
-        <h1>Community</h1>
-        <p>Join teams, collaborate, and learn together</p>
+    <header class="fall-in" style="animation-delay: 0.1s;">
+        <h1 class="fall-in" style="animation-delay: 0.3s;">Community</h1>
+        <p class="fall-in" style="animation-delay: 0.5s;">Join teams, collaborate, and learn together</p>
     </header>
+    
 
     <!-- Search Bar -->
     <div class="filter-bar">
@@ -540,10 +560,10 @@
             <div class="footer-social">
                 <h3>Follow Us</h3>
                 <ul class="social-links">
-                    <li><a href="#" target="_blank">Facebook</a></li>
-                    <li><a href="#" target="_blank">Twitter</a></li>
-                    <li><a href="#" target="_blank">LinkedIn</a></li>
-                    <li><a href="#" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                 </ul>
             </div>
         </div>

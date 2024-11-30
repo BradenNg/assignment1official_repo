@@ -26,7 +26,7 @@
             flex: 1; /* Allow the main content to grow and take available space */
         }
 
-        /* Video background */
+        /* Video background styling */
         .video-background {
             position: fixed;
             top: 0;
@@ -34,35 +34,36 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;
-        }
-        /* Navigation Bar */
-        nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-        display: flex;
-        justify-content: space-between; /* Space between logo and menu items */
-        align-items: center;
-        padding: 10px 20px; /* Consistent padding */
-        z-index: 100;
-        height: 60px; /* Fixed height for navbar */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: -1; /* Ensure it appears behind other content */
         }
 
-        /* Logo */
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            display: flex;
+            justify-content: space-between; /* Space between logo and menu items */
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 100; /* Keep it above other content */
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+        }
+
+        /* Logo styling */
         nav .logo {
             font-size: 1.5em;
             color: white;
             font-weight: bold;
-            }
+        }
 
         /* Navigation Menu */
         nav ul {
-            list-style: none;
+            list-style: none; /* Remove default bullet points */
             display: flex;
-            gap: 20px;
+            gap: 20px; /* Space between menu items */
         }
 
         nav ul li a {
@@ -71,52 +72,78 @@
             font-size: 1em;
             padding: 5px 10px;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: background 0.3s; /* Smooth hover transition */
         }
 
         nav ul li a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2); /* Highlight on hover */
         }
-        /* Main content */
+
+        /* Main content styling */
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            height: 100%; /* Take full height of viewport */
+            background: rgba(0, 0, 0, 0.4); /* Add overlay effect */
             color: white;
             text-align: center;
         }
         .content h1 {
-            font-size: 4em;
+            font-size: 4em; /* Large heading size */
             margin-bottom: 0.5em;
-            margin-top: 50px;
+            margin-top: 50px; /* Create space from top */
         }
         .content p {
-            font-size: 1.5em;
+            font-size: 1.5em; /* Subheading size */
+        }
+
+        /* "Get Started" button styling */
+        .get-started-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 60px;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #D2B48C, #8B4513); /* Gradient background */
+            color: white;
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+            border: 2px solid #A0522D; /* Border styling */
+            border-radius: 30px; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+        }
+
+        .get-started-button:hover {
+            transform: translateY(-5px); /* Lift button on hover */
+            background: linear-gradient(45deg, #FFC107, #FFB300); /* Brighter gradient */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* Footer Section */
         footer {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8); /* Dark background */
             color: white;
-            padding: 10px 20px; /* Reduced padding for shorter height */
+            padding: 10px 20px;
             text-align: left;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Shadow at the top */
+            width: 100%; /* Full width */
         }
 
+        /* Footer content container */
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
             justify-content: space-between;
             align-items: center;
             gap: 20px;
         }
 
-        /* Contact Us Styling */
+        /* Contact Us Section */
         .footer-contact h3 {
             margin-bottom: 10px;
             font-size: 1.5em;
@@ -125,8 +152,8 @@
 
         .contact-details {
             display: flex;
-            gap: 30px; /* Space between email, phone, and address */
-            font-size: 0.9em; /* Slightly smaller font for compact design */
+            gap: 30px; /* Space between contact items */
+            font-size: 0.9em; /* Compact text size */
         }
 
         .contact-details p {
@@ -141,10 +168,10 @@
         }
 
         .contact-details a:hover {
-            color: #FFD700;
+            color: #FFD700; /* Highlight link on hover */
         }
 
-        /* Social Media Links */
+        /* Social Media Section */
         .footer-social h3 {
             margin-bottom: 10px;
             font-size: 1.5em;
@@ -154,12 +181,8 @@
         .social-links {
             list-style: none;
             padding: 0;
-            display: flex; /* Align items side by side */
-            gap: 15px; /* Space between each social link */
-        }
-
-        .social-links li {
-            margin: 0;
+            display: flex;
+            gap: 15px; /* Space between links */
         }
 
         .social-links li a {
@@ -169,10 +192,10 @@
         }
 
         .social-links li a:hover {
-            color: #FFD700;
+            color: #FFD700; /* Highlight social links on hover */
         }
 
-        /* Footer Bottom Section */
+        /* Footer bottom section */
         .footer-bottom {
             margin-top: 10px;
             text-align: center;
@@ -181,29 +204,43 @@
             padding-top: 5px;
         }
 
+        /* Falling animation keyframes */
+        @keyframes falling {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px); /* Start above */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* End at original position */
+            }
+        }
+
+        /* Apply falling animation to elements */
+        .fall-in {
+            animation: falling 1s ease-out forwards; /* Smooth falling animation */
+            opacity: 0; /* Hidden until animation starts */
+        }
+
+        /* Responsive design for smaller screens */
         @media screen and (max-width: 768px) {
             nav {
                 flex-wrap: wrap; /* Allow items to wrap */
-                padding: 10px; /* Adjust padding */
+                padding: 10px;
                 height: auto; /* Remove fixed height */
             }
 
             nav .logo {
-                font-size: 1.2em; /* Smaller logo font size */
+                font-size: 1.2em; /* Adjust logo size */
             }
 
             nav ul {
                 flex-direction: column; /* Stack menu items vertically */
-                gap: 10px; /* Reduce spacing */
-            }
-
-            nav ul li a {
-                font-size: 0.9em; /* Reduce font size for links */
-                padding: 8px 10px; /* Adjust padding */
+                gap: 10px;
             }
 
             .content h1 {
-                font-size: 2.5em; /* Reduce heading size */
+                font-size: 2.5em; /* Adjust heading size */
             }
 
             .content p {
@@ -216,58 +253,41 @@
             }
 
             .footer-contact, .footer-social {
-                width: 100%; /* Take full width */
-                margin-bottom: 20px; /* Add spacing between sections */
-            }
-
-            .contact-details {
-                flex-direction: column; /* Stack contact details */
-                gap: 10px; /* Reduce gap */
-            }
-
-            .social-links {
-                justify-content: center; /* Center social links */
-                gap: 10px; /* Reduce spacing between links */
+                width: 100%; /* Full width */
+                margin-bottom: 20px;
             }
         }
 
-        /* Adjust styles for screens smaller than 480px (phones and smaller) */
+        /* Adjust styles for smaller phones */
         @media screen and (max-width: 480px) {
             nav .logo {
-                font-size: 1em; /* Even smaller logo font size */
+                font-size: 1em; /* Smaller logo size */
             }
 
             nav ul li a {
-                font-size: 0.8em; /* Further reduce font size */
-                padding: 5px 8px; /* Smaller padding */
+                font-size: 0.8em; /* Smaller font for links */
             }
 
             .content h1 {
-                font-size: 2em; /* Further reduce heading size */
-            }
-
-            .content p {
-                font-size: 1em; /* Further adjust paragraph size */
+                font-size: 2em; /* Smaller heading size */
             }
 
             .footer-contact h3, .footer-social h3 {
-                font-size: 1.2em; /* Adjust footer heading size */
+                font-size: 1.2em;
             }
 
             .footer-bottom {
-                font-size: 0.7em; /* Reduce footer bottom text size */
+                font-size: 0.7em; /* Smaller footer text */
             }
         }
     </style>
 </head>
 <body>
-    <!-- Video Background -->
     <video class="video-background" autoplay muted loop>
         <source src="torii-gate-forest-moewalls-com.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Navigation Bar -->
     <nav>
         <div class="logo">StudyHub</div>
         <ul>
@@ -277,20 +297,17 @@
             <li><a href="community.html">Community🤝</a></li>
         </ul>
     </nav>
-    
 
-    <!-- Main Content -->
-    <div class="content">
+    <div class="content fall-in">
         <div>
-            <h1>Welcome to StudyHub</h1>
-            <p>Where Learning Meets Collaboration</p>
+            <h1 class="fall-in">Welcome to StudyHub</h1>
+            <p class="fall-in" style="animation-delay: 0.2s;">Where Learning Meets Collaboration</p>
+            <a href="dashboard.html" class="get-started-button fall-in" style="animation-delay: 0.4s;">Get Started</a>
         </div>
     </div>
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
-            <!-- Contact Us Section -->
             <div class="footer-contact">
                 <h3>Contact Us</h3>
                 <div class="contact-details">
@@ -300,14 +317,13 @@
                 </div>
             </div>
     
-            <!-- Social Media Section -->
             <div class="footer-social">
                 <h3>Follow Us</h3>
                 <ul class="social-links">
-                    <li><a href="#" target="_blank">Facebook</a></li>
-                    <li><a href="#" target="_blank">Twitter</a></li>
-                    <li><a href="#" target="_blank">LinkedIn</a></li>
-                    <li><a href="#" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com">Instagram</a></li>
                 </ul>
             </div>
         </div>
@@ -316,7 +332,5 @@
             <p>&copy; 2024 StudyHub. All rights reserved.</p>
         </div>
     </footer>
-    
-
 </body>
 </html>
