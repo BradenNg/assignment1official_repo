@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StudyHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Video background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Return button */
+        .return-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background: linear-gradient(45deg, #FFD6A5, #FFB3C1); /* Pastel gradient */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 10;
+        }
+
+        .return-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Left text container */
+        .left-text {
+            position: absolute;
+            left: 150px;
+            top: 45%;
+            transform: translateY(-50%);
+            max-width: 400px;
+            animation: fallIn 1s;
+        }
+
+        .left-text h1 {
+            font-size: 3.5em;
+            color: #FFD6A5; /* Pastel peach */
+            text-shadow: 0 0 10px #FFD6A5, 0 0 20px #FFD6A5;
+            margin-bottom: 20px;
+        }
+
+        .left-text p {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        /* Login container */
+        .login-container {
+            position: absolute;
+            right: 250px;
+            top: 35%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(5px);
+            animation: fallIn 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .login-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #77A5F9; /* Pastel blue */
+        }
+
+        .login-container p {
+            font-size: 1.2em;
+            color: rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .login-container input {
+            padding: 15px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        .login-container input::placeholder {
+            color: #777;
+        }
+
+        .login-container input:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-container button {
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #77A5F9, #A7C4FD); /* Pastel blue gradient */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-container button:active {
+            transform: translateY(1px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Section */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            text-align: left;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Footer content container */
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Contact Us Section */
+        .footer-contact h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .contact-details {
+            display: flex;
+            gap: 30px; /* Space between contact items */
+            font-size: 0.9em; /* Compact text size */
+        }
+
+        .contact-details p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #FFD700; /* Highlight link on hover */
+        }
+
+        /* Social Media Section */
+        .footer-social h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px; /* Space between links */
+        }
+
+        .social-links li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-links li a:hover {
+            color: #FFD700; /* Highlight social links on hover */
+        }
+
+        /* Footer bottom section */
+        .footer-bottom {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.8em;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 5px;
+        }
+
+        @keyframes falling {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px); /* Start above */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* End at original position */
+            }
+        }
+
+        /* Apply falling animation to elements */
+        .fall-in {
+            animation: falling 1s ease-out forwards; /* Smooth falling animation */
+            opacity: 0; /* Hidden until animation starts */
+        }
+
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .left-text {
+                left: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .login-container {
+                top: 50%;
+                right: 0;
+                left: 0;
+                transform: translate(-50%, -50%);
+                margin: auto;
+                padding: 30px;
+                max-width: 400px;
+            }
+
+            .login-container h2 {
+                font-size: 2em;
+            }
+
+            .login-container input, .login-container button {
+                font-size: 1em;
+                padding: 12px;
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack footer sections vertically */
+                text-align: center;
+            }
+
+            .footer-contact, .footer-social {
+                margin-bottom: 20px;
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details vertically */
+                gap: 10px;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 10px; /* Reduce gap between social links */
+            }
+
+        }
+
+        @media screen and (max-width: 480px) {
+            .left-text {
+                left: 15px;
+                top: 10%;
+                text-align: center;
+                width: 100%;
+            }
+
+            .login-container {
+                top: 28%;
+                right: 0;
+                left: 5px;
+                transform: translate(-50%, -50%);
+                margin: auto;
+                padding: 20px;
+                max-width: 300px;
+            }
+
+            .login-container h2 {
+                font-size: 1.8em;
+            }
+
+            .login-container p {
+                font-size: 1em;
+            }
+
+            .login-container input, .login-container button {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+
+            .footer-contact h3, .footer-social h3 {
+                font-size: 1.2em;
+            }
+
+            .footer-bottom {
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <!-- Video Background -->
+    <video class="video-background" autoplay muted loop>
+        <source src="chill-seashore-moewalls-com.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Return Button -->
+    <a href="index.html" class="return-button fall-in">Return</a>
+
+    <!-- Left Text -->
+    <div class="left-text fall-in">
+        <h1>Login</h1>
+        <p>Start your journey with StudyHub!</p>
+    </div>
+
+    <!-- Login Box -->
+    <div class="login-container fall-in">
+        <h2>Login</h2>
+        <p>Welcome to StudyHub! Please sign in below:</p>
+        <form onsubmit="handleLogin(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the input values
+            const username = document.getElementById("username").value;
+
+            // Redirect to dashboard (allow all inputs to pass)
+            alert(`Welcome, ${username || "User"}!`);
+            window.location.href = "dashboard.html"; // Redirect to dashboard
+        }
+    </script>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-details">
+                    <p>Email: <a href="mailto:support@studyhub.com">support@studyhub.com</a></p>
+                    <p>Phone: +65 1234 5678</p>
+                    <p>Address: 123 Clementi Lane, Singapore</p>
+                </div>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.twitter.com">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 StudyHub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

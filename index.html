@@ -249,12 +249,21 @@
 
             .footer-container {
                 flex-direction: column; /* Stack footer sections vertically */
-                text-align: center; /* Center-align text */
+                text-align: center;
             }
 
             .footer-contact, .footer-social {
-                width: 100%; /* Full width */
                 margin-bottom: 20px;
+            }
+
+            .contact-details {
+                flex-direction: column; /* Stack contact details vertically */
+                gap: 10px;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 10px; /* Reduce gap between social links */
             }
         }
 
@@ -277,7 +286,7 @@
             }
 
             .footer-bottom {
-                font-size: 0.7em; /* Smaller footer text */
+                font-size: 0.7em;
             }
         }
     </style>
@@ -288,21 +297,12 @@
         Your browser does not support the video tag.
     </video>
 
-    <nav>
-        <div class="logo">StudyHub</div>
-        <ul>
-            <li><a href="index.html">Home🏠</a></li>
-            <li><a href="dashboard.html">Dashboard📊</a></li>
-            <li><a href="challenges.html">Challenges💪</a></li>
-            <li><a href="community.html">Community🤝</a></li>
-        </ul>
-    </nav>
-
     <div class="content fall-in">
         <div>
             <h1 class="fall-in">Welcome to StudyHub</h1>
             <p class="fall-in" style="animation-delay: 0.2s;">Where Learning Meets Collaboration</p>
-            <a href="dashboard.html" class="get-started-button fall-in" style="animation-delay: 0.4s;">Get Started</a>
+            <a href="login.html" class="get-started-button fall-in" style="animation-delay: 0.4s;">Get Started</a>
+
         </div>
     </div>
 
